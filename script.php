@@ -22,13 +22,27 @@ if (!$conn) {
 
 $sql = "CREATE TABLE `users` if not exists ( 
   `id` INT NOT NULL AUTO_INCREMENT ,
+  'user_name' VARCHAR(100) NOT NULL,
   `password` VARCHAR(100) NOT NULL ,
-  `user_name` VARCHAR(255) NOT NULL DEFAULT '' ,
-  `uname` VARCHAR(255) NOT NULL DEFAULT '' ,
+  `uname` VARCHAR(255)'' ,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4_unicode_ci COLLATE=utf8_unicode_ci";
+
+$sql = "CREATE TABLE `costumer` if not exists ( 
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  'kundenname' VARCHAR(100) NOT NULL,
+  `fristen` datetime ,
+  `arbeiten` ('Buchhaltung', 'Lohnbuchhaltung','Steuern', 'Beratung') ,
+  `Mitarbeiter` ('Herbert', 'Kai','Franz', 'Daniel') ,
+  `status` ('Offen', 'In Bearbeitung','Erledigt') ,
+  `note` text ,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4_unicode_ci COLLATE=utf8_unicode_ci";
+
 
 if ($conn->query($sql) === TRUE) {
   echo "Table users created successfully";
